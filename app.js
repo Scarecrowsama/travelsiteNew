@@ -22,10 +22,15 @@ app.use('/graphql', graphqlHttp({
   rootValue: graphqlResolvers,
   graphiql: true
 }));
-const makeRegion = require('./backend/_regions/region');
-app.use('/', (req, res, next) => {
-  const newRegion = makeRegion({name: 'asia' });
-  res.json({ message: 'Succesfully connected to the backend!', region: newRegion });
+
+const adaptRequest = require('./backend/helpers/adapt-request');
+const regionHandler = require('./backend/_regions/index');
+app.use('/', async (req, res, next) => {
+
+  regionHandler(adaptRequest(req)).then(({ headers, statusCode, data }) => {
+    res.set(headers).status(statusCode).json(data);
+  }).catch(err => console.log('wtf'));
+
 });
 
 //Connecting to the DB and listening to the server after success.

@@ -7,7 +7,7 @@ exports.isEmailValid = function(email) {
 };
 
 exports.isNameValid = function(name) {
-  const valid = new RegExp(/^[a-zA-Z0-9]+$/);
+  const valid = new RegExp(/^[a-zA-Z0-9 ]+$/);
   return (valid.test(name) && name.length >= MINIMUM_NAME_LENGTH);
 };
 

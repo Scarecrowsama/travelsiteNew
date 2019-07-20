@@ -2,7 +2,7 @@ const requiredParam = require('../helpers/required-param');
 const { isNameValid } = require('../helpers/validation/input-validation');
 const upperFirstLetter = require('../helpers/normalization/upperFirstLetter');
 
-module.exports = function makeRegion(regionInfo = requiredParam('region')) {
+module.exports = function makeAValidRegionObject(regionInfo = requiredParam('region')) {
 
   const validRegion = validate(regionInfo);
   const normalizedRegion = normalize(validRegion);
@@ -15,8 +15,10 @@ module.exports = function makeRegion(regionInfo = requiredParam('region')) {
 
   function normalize({ name }) {
     return {
-      name: upperFirstLetter(name)
+      name: upperFirstLetter(name.trim())
     };
   }
 
 };
+
+//Need to capitalize every letter.
