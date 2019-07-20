@@ -4,7 +4,6 @@ const makeHttpError = require('../helpers/errorHandling/http-error');
 module.exports = function regionEndpointHandler({ regionFactory }) {
   
   return async function regionHandler(httpRequest) {
-    console.log(httpRequest);
 
     switch(httpRequest.method) {
       case 'GET':
@@ -12,23 +11,61 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
       case 'POST':
         return postRegions(httpRequest);
       default:
-        return {};
+        return makeHttpError({
+          statusCode: 405,
+          errorMessage: `${httpRequest.method} method is not allowed.`
+        });
     }
 
     async function getRegions(httpRequest) {
-      const data = await regionFactory.add(httpRequest.body);
-      return { 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        statusCode: 201,
-        data: data
-       }
+
+      try {
+        const newRegion = await regionFactory.findById({ regionId: '5d32f13fbb37872f8801acdb' });
+        return {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          statusCode: 200,
+          data: newRegion
+        };
+      } catch(error) {
+        return makeHttpError({
+          statusCode: 404,
+          errorMessage: error.message
+        });
+      }
+
     };
 
     async function postRegions(httpRequest) {
 
+      let regionInfo = httpRequest.body;
+
+      if(!regionInfo) {
+        return makeHttpError({
+          statusCode: 400,
+          errorMessage: 'Bad request. No POST body.'
+        });
+      }
+
+      try {
+        const newRegion = makeRegion(regionInfo);
+        const createdRegion = await regionFactory.add(newRegion);
+        return { 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          statusCode: 201,
+          data: createdRegion
+         }
+      } catch(error) {
+        return makeHttpError({
+          statusCode: 500,
+          errorMessage: error.message
+        });
+      }
     };
 
   };
+
 }

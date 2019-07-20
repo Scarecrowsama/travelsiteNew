@@ -14,7 +14,7 @@ module.exports = function makeRegionsResolver({ database }) {
     async function add({ name }) {
       const newRegionObject = makeAValidRegionObject({ name });
       const createRegionInDb = await regionModel.create(newRegionObject);
-      return createRegionInDb.save();
+      return await createRegionInDb.save();
     };
 
     async function findById({ regionId }) {
