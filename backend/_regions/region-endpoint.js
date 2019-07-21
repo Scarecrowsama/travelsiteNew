@@ -20,13 +20,15 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
     async function getRegions(httpRequest) {
 
       try {
-        const newRegion = await regionFactory.findById({ regionId: '5d32f13fbb37872f8801acdb' });
+        const { id } = httpRequest.pathParams || {};
+        const result = id ? await regionFactory.findById({ regionId: id }) : null;
+        
         return {
           headers: {
             'Content-Type': 'application/json'
           },
           statusCode: 200,
-          data: newRegion
+          data: result
         };
       } catch(error) {
         return makeHttpError({
@@ -46,6 +48,17 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
           statusCode: 400,
           errorMessage: 'Bad request. No POST body.'
         });
+      }
+      console.log(typeof httpRequest.body);
+      if(typeof httpRequest.body === 'string') {
+        try {
+          regionInfo = JSON.parse(regionInfo);
+        } catch(error) {
+          return makeHttpError({
+            statusCode: 400,
+            errorMessage: 'Post request must be valid JSON.'
+          });
+        }
       }
 
       try {

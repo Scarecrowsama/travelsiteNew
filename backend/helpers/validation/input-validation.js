@@ -12,5 +12,11 @@ exports.isNameValid = function(name) {
 };
 
 exports.isPasswordValid = function(password) {
+  //Validate alphanumeric and some special characters
   return password.length >= MINIMUM_PASSWORD_LENGTH;
+}
+
+exports.isCountryValid = function(country) {
+  //Validate mongoID
+  return country.length > MINIMUM_NAME_LENGTH;
 }

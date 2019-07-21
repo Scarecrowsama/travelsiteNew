@@ -27,17 +27,15 @@ const adaptRequest = require('./backend/helpers/adapt-request');
 const regionHandler = require('./backend/_regions/index');
 app.use('/', async (req, res, next) => {
 
-  regionHandler(adaptRequest(req)).then(({ headers, statusCode, data }) => {
-    res.set(headers).status(statusCode).json(data);
-  }).catch(err => console.log('wtf'));
-  // const regionFactory = makeRegionsResolver({ database: db });
-  // // const newRegion = await regionFactory.add({ name: 'asia' });
-  // try {
-  //   const newRegion = await regionFactory.findById({ regionId: '5d32f766248f9a2014240ef3' });
-  //   res.status(201).json({ message: 'Succesfully connected to the backend!', region: newRegion });
-  // } catch(err) {
-  //   res.status(400).json({ message: 'Could not find the region in the database.', error: err.message });
-  // }
+  const makeCity = require('./backend/_cities/city');
+  const newCity = makeCity({ name: 'Yolo', country: 'dd2e3d3dr2rff', attractions: [], eateries: [] });
+  res.json(newCity);
+  //Testing regions
+  // regionHandler(adaptRequest(req))
+  // .then(({ headers, statusCode, data }) => {
+  //   res.set(headers).status(statusCode).json(data);
+  // })
+  // .catch(err => console.log('wtf'));
 
 });
 
