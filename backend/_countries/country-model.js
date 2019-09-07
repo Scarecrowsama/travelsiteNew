@@ -1,60 +1,56 @@
 const mongoose = require('mongoose');
 
 const country = new mongoose.Schema({
-  name: { type: String, requried: true },
-  languages: [
-    { name: { type: String, required: true } }
-  ],
-  religions: [
-    {
-      name: { type: String, prevalecence: Number, comments: String }
-    }
-  ],
-  money: {
-    currencies: [
+  basics: {
+    name: { type: String, requried: true },
+    regionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Region' },
+    languages: [
+      { name: { type: String, required: true } }
+    ],
+    religions: [
       {
-        name: { type: String, required: true },
-        acronym: { type: String, required: true },
-        official: { type: Boolean, required: true },
+        name: { type: String, prevalecence: Number, comments: String }
       }
     ],
-    comments: { type: String }
+    economics: {
+      currencies: [
+        {
+          name: { type: String, required: true },
+          acronym: { type: String, required: true },
+          official: { type: Boolean, required: true },
+        }
+      ],
+      comments: { type: String }
+    },
+    electrics: {
+      voltage: { type: Number },
+      frequency: { type: String },
+      plug: { type: String },
+    },
+    food: {
+      dietaryOptions: {
+        glutenFree: { difficulty: { type: Number }, comments: { type: String } },
+        vegetarian: { difficulty: { type: Number }, comments: { type: String } },
+        vegan: { difficulty: { type: Number }, comments: { type: String } }
+      },
+      others: []
+    },
+    simCards: [],
+    wifi: {
+      coverage: { type: String },
+      speed: { type: String },
+      pocketWifi: { type: Boolean }
+    },
+    importantDates: [],
+    nationalHolidays: [
+      {
+        name: { type: String },
+        date: { type: Date },
+        duration: { type: Number },
+        details: { type: String }
+      }
+    ],
   },
-  electrics: {
-    voltage: { type: Number },
-    frequency: { type: String },
-    plug: { type: String },
-  },
-  emergencyNumbers: [ 
-    { 
-      description: { type: String }, number: { type: Number } 
-    }
-  ],
-  visas: [
-    {
-
-    }
-  ],
-  risks: {
-    waterSafety: { 
-      isSafe: { type: Boolean, required: true},
-      comments: { type: String, required: true } 
-    }, 
-    others: [{
-      name: { type: String },
-      possibility: { type: Boolean },
-      probability: { type: Number },
-      description: { type: String }
-    }]
-  },
-  prohibitions: [
-    {
-      name: { type: String },
-      description: { type: String },
-      gender: { type: String },
-      penalty: { type: String }
-    }
-  ],
   costs: {
     food: [
       {
@@ -97,58 +93,91 @@ const country = new mongoose.Schema({
         cost: { type: Number },
         comments: { type: String }
       }
-    ]
-  },
-  vaccinations: [
-    {
-      name: { type: String },
-      recommended: { type: Boolean },
-      mandatory: { type: Boolean },
-      comments: { type: String }
+    ],
+    discountCards: [
+      {
+        name: { type: String },
+        discountsFor: { type: String },
+        price: { type: String },
+        details: { type: String },
+        recommendedFor: { type: String }
+      }
+    ],
+    averages: {
+      food: { type: String },
+      accommodation: { type: String },
+      transport: { type: String },
+      phoneInternet: { type: String },
+      others: { type: String },
+      avgPerDay: { type: String }
     }
-  ],
-  customsDuties: [],
-  importantDates: [],
-  nationalHolidays: [
-    {
-      name: { type: String },
-      date: { type: Date },
-      duration: { type: Number },
-      details: { type: String }
-    }
-  ],
-  simCards: [],
-  wifi: {
-    coverage: { type: String },
-    speed: { type: String },
-    pocketWifi: { type: Boolean }
   },
-  discountCards: [],
-  food: {},
   weather: {
     details: { type: String },
     months: {
-        january: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        february: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        march: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        april: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        may: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        june: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        july: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        august: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        september: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        october: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        november: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
-        december: { avgTemp: { type: Number }, avgRainyDays: { type: Number } }
+      jan: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      feb: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      mar: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      apr: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      may: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      jun: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      jul: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      aug: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      sep: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      oct: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      nov: { avgTemp: { type: Number }, avgRainyDays: { type: Number } },
+      dec: { avgTemp: { type: Number }, avgRainyDays: { type: Number } }
     } 
+  },
+  legal: {
+    visas: [
+      {
+  
+      }
+    ],
+    customsDuties: [],
+  },
+  safety: {
+    emergencyNumbers: [ 
+      { 
+        description: { type: String }, number: { type: Number } 
+      }
+    ],
+    vaccinations: [
+      {
+        name: { type: String },
+        recommended: { type: Boolean },
+        mandatory: { type: Boolean },
+        comments: { type: String }
+      }
+    ],
+    risks: {
+      waterSafety: { 
+        isSafe: { type: Boolean, required: true},
+        comments: { type: String, required: true } 
+      }, 
+      others: [{
+        name: { type: String },
+        possibility: { type: Boolean },
+        probability: { type: Number },
+        description: { type: String }
+      }]
+    },
+    prohibitions: [
+      {
+        name: { type: String },
+        description: { type: String },
+        gender: { type: String },
+        penalty: { type: String }
+      }
+    ]
   },
   cities: [
     {
-      id: { type: String },
+      id: { type: mongoose.Schema.Types.ObjectId, ref: 'City' },
       name: { type: String }
     }
   ],
-  regionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Region' },
   rating: { 
     id: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' },
     totalVotes: { type: Number, default: 0 }, total: { type: Number, default: 0 }

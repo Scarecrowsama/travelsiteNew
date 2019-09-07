@@ -4,56 +4,48 @@ const Country = require('../backend/_countries/country-model');
 
 const data = [
   {
-    name: 'Japan',
-    languages: [{ name: 'Japanese' }],
-    religions: [
-      { name: 'Folk Shinto or No religion', prevalecence: 51.8, comments: '' },
-      { name: 'Buddhism', prevalecence: 34.9, comments: '' }
-    ],
-    money: {
-      currencies: [
-        {
-          name: 'Yen' ,
-          acronym: 'JPY',
-          official: true
-        }
+    basics: {
+      name: 'Japan',
+      regionId: '5d6a3c4b2b27d6075493f6b4',
+      languages: [{ name: 'Japanese' }],
+      religions: [
+        { name: 'Folk Shinto or No religion', prevalecence: 51.8, comments: '' },
+        { name: 'Buddhism', prevalecence: 34.9, comments: '' }
       ],
-      comments: 'Japan\'s official currency.'
-    },
-    electrics: {
-      voltage: 100,
-      frequency: '50 Hz / 60 Hz',
-      plug: 'A/B',
-    },
-    emergencyNumbers: [ 
-      { 
-        description: 'Police', number: 110,
-        description: 'Coast Guard', number: 118 ,
-        description: 'Fire, Ambulance, Emergency Rescue', number: 119 
-      }
-    ],
-    visas: [],
-    risks: {
-      waterSafety: { 
-        isSafe: true,
-        comments: 'Is safe' 
-      }, 
-      others: [
+      economics: {
+        currencies: [
+          { name: 'Yen', acronym: 'JPY',  official: true }
+        ],
+        comments: 'Japan\'s official currency.'
+      },
+      electrics: {
+        voltage: 100,
+        frequency: '50 Hz / 60 Hz',
+        plug: 'A/B',
+      },
+      food: {
+        dietaryOptions: {
+          glutenFree: { difficulty: 4, comments: 'It is very difficult to find in Japan.' },
+          vegetarian: { difficulty: 3, comments: 'It is difficult to find in Japan.' },
+          vegan: { difficulty: 4, comments: 'It is very difficult to find in Japan.' }
+        }
+      },
+      simCards: [],
+      wifi: {
+        coverage: 'Amazing' ,
+        speed: 'Very Fast',
+        pocketWifi: true
+      },
+      importantDates: [],
+      nationalHolidays: [
         {
-          name: 'Earthquakes',
-          possibility: true ,
-          probability: 7,
-          description: 'Earthquakes in Japan'
-        },
-        {
-          name: 'Tsunamis',
-          possibility: true ,
-          probability: 3,
-          description: 'There is a risk of tsunamis in Japan, mainly after a big eartquake occurs in the ocean.'
+          name: 'New Year\'s Day',
+          date: 1567241930376,
+          duration: 1,
+          details: 'New Year\'s Day'
         }
       ]
     },
-    prohibitions: [],
     costs: {
       food: [
         {
@@ -90,30 +82,54 @@ const data = [
           }
         ],
       },
-      others: []
-    },
-    vaccinations: [],
-    customsDuties: [],
-    importantDates: [],
-    nationalHolidays: [
-      {
-        name: 'New Year\'s Day',
-        date: 1567241930376,
-        duration: 1,
-        details: 'New Year\'s Day'
+      others: [],
+      discountCards: [],
+      averages: {
+        food: 'Medium-High',
+        accommodation: 'Medium-High',
+        transport: 'Medium',
+        phoneInternet: 'Low',
+        others: 'Medium',
+        avgPerDay: '25-35'
       }
-    ],
-    simCards: [],
-    wifi: {
-      coverage: 'Amazing' ,
-      speed: 'Very Fast',
-      pocketWifi: true
     },
-    discountCards: [],
-    food: {},
     weather: {},
+    legal : {
+      visas: [],
+      customsDuties: []
+    }, 
+    safety: {
+      emergencyNumbers: [ 
+        { 
+          description: 'Police', number: 110,
+          description: 'Coast Guard', number: 118 ,
+          description: 'Fire, Ambulance, Emergency Rescue', number: 119 
+        }
+      ],
+      vaccinations: [],
+      risks: {
+        waterSafety: { 
+          isSafe: true,
+          comments: 'Is safe' 
+        }, 
+        others: [
+          {
+            name: 'Earthquakes',
+            possibility: true ,
+            probability: 7,
+            description: 'Earthquakes in Japan'
+          },
+          {
+            name: 'Tsunamis',
+            possibility: true ,
+            probability: 3,
+            description: 'There is a risk of tsunamis in Japan, mainly after a big eartquake occurs in the ocean.'
+          }
+        ]
+      },
+      prohibitions: [],
+    },
     cities: [],
-    regionId: '5d6a3c4b2b27d6075493f6b4',
     rating: {}
   },
   // {
