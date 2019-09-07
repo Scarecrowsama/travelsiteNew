@@ -25,3 +25,14 @@ const city = new mongoose.Schema({
 }, { strict: true,  timestamps: true });
 
 module.exports = mongoose.model('City', city);
+
+theater
+museum
+market
+attraction
+festival
+themePark
+landmark
+park
+event
+temple

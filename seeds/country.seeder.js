@@ -132,145 +132,238 @@ const data = [
     cities: [],
     rating: {}
   },
-  // {
-  //   name: 'Portugal',
-  //   languages: [{ name: 'Portuguese' }],
-  //   religions: [
-  //     { name: 'Catholic Church', prevalecence: 81, comments: '' }
-  //   ],
-  //   money: {
-  //     currencies: [
-  //       {
-  //         name: 'Euro' ,
-  //         acronym: 'EUR',
-  //         official: true
-  //       }
-  //     ],
-  //     comments: ''
-  //   },
-  //   electrics: {
-  //     voltage: 230,
-  //     frequency: '50 Hz',
-  //     plug: 'C/F',
-  //   },
-  //   emergencyNumbers: [ 
-  //     { 
-  //       description: 'Ambulance, Fire, National Police', number: 112,
-  //       description: 'Drug Abuse', number: 1414,
-  //       description: 'Child Abuse', number: 213433333 
-  //     }
-  //   ],
-  //   visas: [],
-  //   risks: {
-  //     waterSafety: { 
-  //       isSafe: true,
-  //       comments: 'Is safe' 
-  //     }, 
-  //     others: [
-  //       {
-  //         name: 'Pickpocketing',
-  //         possibility: true ,
-  //         probability: 7,
-  //         description: 'Pickpocketers in Portugal'
-  //       }
-  //     ]
-  //   },
-  //   prohibitions: [],
-  //   costs: [],
-  //   vaccinations: [],
-  //   customsDuties: [],
-  //   importantDates: [],
-  //   nationalHolidays: [
-  //     {
-  //       name: 'New Year\'s Day',
-  //       date: 1567241930376,
-  //       duration: 1,
-  //       details: 'New Year\'s Day'
-  //     }
-  //   ],
-  //   simCards: [],
-  //   wifi: {
-  //     coverage: 'Very Good' ,
-  //     speed: 'Fast',
-  //     pocketWifi: false
-  //   },
-  //   discountCards: [],
-  //   food: {},
-  //   weather: {},
-  //   cities: [],
-  //   regionId: '5d697e6c69e10b3aec9e5e84',
-  //   rating: {}
-  // },
-  // {
-  //   name: 'Spain',
-  //   languages: [{ name: 'Spanish' }],
-  //   religions: [
-  //     { name: 'Christianism', prevalecence: 68.9, comments: '' },
-  //     { name: 'No Religion', prevalecence: 27.1, comments: '' },
-  //   ],
-  //   money: {
-  //     currencies: [
-  //       {
-  //         name: 'Euro' ,
-  //         acronym: 'EUR',
-  //         official: true
-  //       }
-  //     ],
-  //     comments: ''
-  //   },
-  //   electrics: {
-  //     voltage: 230,
-  //     frequency: '50 Hz',
-  //     plug: 'C/F',
-  //   },
-  //   emergencyNumbers: [ 
-  //     { 
-  //       description: 'Ambulance, Fire, National Police', number: 112,
-  //       description: 'Drug Abuse', number: 1414,
-  //       description: 'Child Abuse', number: 213433333 
-  //     }
-  //   ],
-  //   visas: [],
-  //   risks: {
-  //     waterSafety: { 
-  //       isSafe: true,
-  //       comments: 'Is safe' 
-  //     }, 
-  //     others: [
-  //       {
-  //         name: 'Pickpocketing',
-  //         possibility: true ,
-  //         probability: 7,
-  //         description: 'Pickpocketers in Portugal'
-  //       }
-  //     ]
-  //   },
-  //   prohibitions: [],
-  //   costs: [],
-  //   vaccinations: [],
-  //   customsDuties: [],
-  //   importantDates: [],
-  //   nationalHolidays: [
-  //     {
-  //       name: 'New Year\'s Day',
-  //       date: 1567241930376,
-  //       duration: 1,
-  //       details: 'New Year\'s Day'
-  //     }
-  //   ],
-  //   simCards: [],
-  //   wifi: {
-  //     coverage: 'Very Good' ,
-  //     speed: 'Fast',
-  //     pocketWifi: false
-  //   },
-  //   discountCards: [],
-  //   food: {},
-  //   weather: {},
-  //   cities: [],
-  //   regionId: '5d697e6c69e10b3aec9e5e84',
-  //   rating: {}
-  // }
+  {
+    basics: {
+      name: 'Portugal',
+      regionId: '5d6a3c4b2b27d6075493f6b4',
+      languages: [{ name: 'Portuguese' }],
+      religions: [
+        { name: 'Catholic Church', prevalecence: 81, comments: '' }
+      ],
+      economics: {
+        currencies: [
+          { name: 'Euro', acronym: 'EUR',  official: true }
+        ],
+        comments: 'Portugal\'s official currency.'
+      },
+      electrics: {
+        voltage: 230,
+        frequency: '50 Hz',
+        plug: 'C/F',
+      },
+      food: {
+        dietaryOptions: {
+          glutenFree: { difficulty: 3, comments: 'It is not difficult to find in Portugal.' },
+          vegetarian: { difficulty: 2, comments: 'It is easy to find in Portugal.' },
+          vegan: { difficulty: 3, comments: 'It is not difficult to find in Portugal.' }
+        }
+      },
+      simCards: [],
+      wifi: {
+        coverage: 'Very Good' ,
+        speed: 'Fast',
+        pocketWifi: true
+      },
+      importantDates: [],
+      nationalHolidays: [
+        {
+          name: 'New Year\'s Day',
+          date: 1567241930376,
+          duration: 1,
+          details: 'New Year\'s Day'
+        }
+      ]
+    },
+    costs: {
+      food: [
+        {
+          place: 'Supermarkets',
+          cost: 2.5,
+          comments: 'Supermarkets in Portugal'
+        }
+      ],
+      accommodation: [
+        {
+          place: 'Hostels',
+          cost: 2,
+          comments: 'Hostels in Portugal are fantastic.'
+        }
+      ],
+      transport: [
+        {
+          method: 'Bus',
+          cost: 2,
+          comments: 'Buses in Portugal.'
+        }
+      ],
+      telecoms: {
+        phone: {
+          calls: 2,
+          megabytes: 3,
+          comments: 'Getting a SIM card in Portugal.'
+        },
+        internet: [],
+      },
+      others: [],
+      discountCards: [],
+      averages: {
+        food: 'Medium',
+        accommodation: 'Medium',
+        transport: 'Low',
+        phoneInternet: 'Low',
+        others: 'Medium',
+        avgPerDay: '20-30'
+      }
+    },
+    weather: {},
+    legal : {
+      visas: [],
+      customsDuties: []
+    }, 
+    safety: {
+      emergencyNumbers: [ 
+        { 
+          description: 'Ambulance, Fire, National Police', number: 112,
+          description: 'Drug Abuse', number: 1414,
+          description: 'Child Abuse', number: 213433333 
+        }
+      ],
+      vaccinations: [],
+      risks: {
+        waterSafety: { 
+          isSafe: true,
+          comments: 'Is safe' 
+        }, 
+        others: [
+          {
+            name: 'Pickpocketing',
+            possibility: true ,
+            probability: 7,
+            description: 'Pickpocketers in Portugal'
+          }
+        ]
+      },
+      prohibitions: [],
+    },
+    cities: [],
+    rating: {}
+  },
+  {
+    basics: {
+      name: 'Spain',
+      regionId: '5d6a3c4b2b27d6075493f6b4',
+      languages: [{ name: 'Spanish' }],
+      religions: [
+        { name: 'Christianism', prevalecence: 68.9, comments: '' },
+        { name: 'No Religion', prevalecence: 27.1, comments: '' },
+      ],
+      economics: {
+        currencies: [
+          { name: 'Euro', acronym: 'EUR',  official: true }
+        ],
+        comments: 'Spain\'s official currency.'
+      },
+      electrics: {
+        voltage: 230,
+        frequency: '50 Hz',
+        plug: 'C/F',
+      },
+      food: {
+        dietaryOptions: {
+          glutenFree: { difficulty: 2, comments: 'It is easy to find in Spain.' },
+          vegetarian: { difficulty: 2, comments: 'It is easy to find in Spain.' },
+          vegan: { difficulty: 2, comments: 'It is easy to find in Spain.' }
+        }
+      },
+      simCards: [],
+      wifi: {
+        coverage: 'Good' ,
+        speed: 'Fast',
+        pocketWifi: true
+      },
+      importantDates: [],
+      nationalHolidays: [
+        {
+          name: 'New Year\'s Day',
+          date: 1567241930376,
+          duration: 1,
+          details: 'New Year\'s Day'
+        }
+      ]
+    },
+    costs: {
+      food: [
+        {
+          place: 'Supermarkets',
+          cost: 2.5,
+          comments: 'Supermarkets in Spain'
+        }
+      ],
+      accommodation: [
+        {
+          place: 'Hostels',
+          cost: 2.5,
+          comments: 'Hostels in Spain are good.'
+        }
+      ],
+      transport: [
+        {
+          method: 'Bus',
+          cost: 2,
+          comments: 'Buses in Spain.'
+        }
+      ],
+      telecoms: {
+        phone: {
+          calls: 2,
+          megabytes: 3,
+          comments: 'Getting a SIM card in Spain.'
+        },
+        internet: [],
+      },
+      others: [],
+      discountCards: [],
+      averages: {
+        food: 'Medium',
+        accommodation: 'Medium',
+        transport: 'Low',
+        phoneInternet: 'Low',
+        others: 'Medium',
+        avgPerDay: '20-30'
+      }
+    },
+    weather: {},
+    legal : {
+      visas: [],
+      customsDuties: []
+    }, 
+    safety: {
+      emergencyNumbers: [ 
+        { 
+          description: 'Ambulance, Fire, Police', number: 112,
+          description: 'Guardia Civil', number: 62
+        }
+      ],
+      vaccinations: [],
+      risks: {
+        waterSafety: { 
+          isSafe: true,
+          comments: 'Is safe' 
+        }, 
+        others: [
+          {
+            name: 'Pickpocketing',
+            possibility: true ,
+            probability: 7,
+            description: 'Pickpocketers in Spain'
+          }
+        ]
+      },
+      prohibitions: [],
+    },
+    cities: [],
+    rating: {}
+  }
 ];
 
 class CountrySeeder extends Seeder {

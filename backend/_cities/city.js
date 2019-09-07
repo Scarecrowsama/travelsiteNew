@@ -1,6 +1,6 @@
 const requiredParam = require('../helpers/required-param');
 const { isNameValid, isCountryValid } = require('../helpers/validation/input-validation');
-const upperFirstLetter = require('../helpers/normalization/upperFirstLetter');
+const capitalize = require('../helpers/normalization/capitalize');
 
 module.exports = function makeAValidCityObject(cityInfo = requiredParam('city')) {
   
@@ -22,7 +22,7 @@ module.exports = function makeAValidCityObject(cityInfo = requiredParam('city'))
 
   function normalize({ name, country, ...otherInfo }) {
     return {
-      name: upperFirstLetter(name),
+      name: capitalize(name),
       country,
       ...otherInfo
     };
