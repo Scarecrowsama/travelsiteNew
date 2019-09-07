@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const region = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true },
   countries: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Destination'
+      id : { type: mongoose.Schema.Types.ObjectId, ref: 'Country', required: true },
+      name: { type: String, required: true }
     }
   ]
 });

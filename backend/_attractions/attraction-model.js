@@ -27,7 +27,10 @@ const attraction = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId, required: true },
     name: { type: String, required: true }
   },
-  rating: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' },
+  rating: { 
+    id: { type: Schema.Types.ObjectId, ref: 'Rating' },
+    totalVotes: { type: Number, default: 0 }, total: { type: Number, default: 0 }
+  },
   article: { type: mongoose.Schema.Types.ObjectId, ref: 'Article' }
 }, {strict: true});
 

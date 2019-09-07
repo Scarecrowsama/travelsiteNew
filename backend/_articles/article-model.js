@@ -7,11 +7,18 @@ const article = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId, required: true },
     name: { type: String, required: true }
   },
-  date: { type: Date, default: Date.now},
   rating: { 
     id: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' },
-    totalVotes: { type: Number, default: 0 }, average: { type: Number, default: 0 } 
-}
-});
+    totalVotes: { type: Number, default: 0 }, total: { type: Number, default: 0 } 
+  },
+  tags: [
+    {
+      id: { type: mongoose.Schema.Types.ObjectId, required: true },
+      name: { type: String, required: true }
+    }
+  ],
+  entityId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  entityTypeId: { type: mongoose.Schema.Types.ObjectId, required: true }
+}, { strict: true, timestamps: true });
 
 module.exports = mongoose.model('Article', article);

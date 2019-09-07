@@ -1,13 +1,12 @@
-const makeAValidRegionObject = require('../_regions/region');
-const regionModel = require('./region-model');
+const makeAValidRegionObject = require('./region-maker');
 
-module.exports = function makeRegionsResolver({ database }) {
+module.exports = function makeRegionsResolver({ regionModel }) {
 
     return Object.freeze({
       add,
       findById,
       findAll,
-      update,
+      edit,
       remove
     });
 
@@ -23,15 +22,15 @@ module.exports = function makeRegionsResolver({ database }) {
     };
 
     async function findAll() {
-
+      return await regionModel.find();
     };
 
-    async function update() {
-      
+    async function edit({ regionId, newInfo }) {
+      return await regionModel.updateOne({ _id: regionId.trim() }, newInfo);
     };
 
-    async function remove() {
-      
+    async function remove({ regionId }) {
+      return await regionModel.deleteOne({ _id: regionId });
     };
 
   };
