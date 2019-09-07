@@ -13,7 +13,7 @@ module.exports = function makeAValidRegionObject(regionInfo = requiredParam('reg
     return isNameValid(name) ? { name } : null;
   }
 
-  function normalize({ name }) {
+  function normalize({ name = requiredParam('name') } = {}) {
     return {
       name: capitalize(name.trim())
     };

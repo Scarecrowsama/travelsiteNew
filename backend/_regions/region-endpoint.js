@@ -68,7 +68,6 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
       }
 
       try {
-
         const newRegionObject = makeRegion(regionInfo);
         const result = isUpdate
           ? await regionFactory.edit({ regionId: id , newInfo: { name: httpRequest.body.name } })
@@ -76,7 +75,7 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
             ? await regionFactory.remove({ regionId: id })
             : isCreate
               ? await regionFactory.add(newRegionObject)
-              : 'Nothing to do here mate';
+              : null;
         
         return { 
           headers: {
@@ -93,7 +92,6 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
         });
       }
     };
-
   };
 
 }

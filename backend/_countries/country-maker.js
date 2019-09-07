@@ -8,11 +8,13 @@ module.exports = function makeAValidCountryObject(countryInfo = requiredParam('c
 
   return Object.freeze(normalizedCountry);
 
-  function validate() {
-
+  function validate({ name = requiredParam('name') } = {}) {
+    return isNameValid(name) ? { name } : null;
   }
 
-  function normalize() {
-    
+  function normalize({ name = requiredParam('name') } = {}) {
+    return {
+      name: capitalize(name.trim())
+    };
   }
 };
