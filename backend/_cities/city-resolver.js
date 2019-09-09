@@ -10,10 +10,10 @@ module.exports = function makeCityResolver({ database }) {
     remove
   });
 
-  async function add({ name, country, ...otherInfo }) {
-    const newCityObject = makeAValidCityObject({ name, country, ...otherInfo });
-    const createCityInDb = await cityModel.create(newCityObject);
-    return createCityInDb.save();
+  async function add(cityDetails) {
+    const newCityObject = makeAValidCityObject(cityDetails);
+    const newCityInstance = await cityModel.create(newCityObject);
+    return newCityInstance.save();
   };
 
   async function findById({ cityId }) {
@@ -21,15 +21,15 @@ module.exports = function makeCityResolver({ database }) {
   };
 
   async function findAll() {
-
+    return cityModel.find();
   };
 
-  async function update() {
-
+  async function update({ cityId, updatedDetails }) {
+    return cityModel.updateOne({ _id: cityId.trim() }, updatedDetails);
   };
 
-  async function remove() {
-
+  async function remove({ cityId }) {
+    return cityModel.deleteOne({ _id: cityId });
   };
 
 };
