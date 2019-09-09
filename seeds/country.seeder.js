@@ -7,7 +7,7 @@ const data = [
     basics: {
       name: 'Japan',
       regionId: '5d6a3c4b2b27d6075493f6b4',
-      languages: [{ name: 'Japanese' }],
+      languages: [{ name: 'Japanese', official: true }],
       religions: [
         { name: 'Folk Shinto or No religion', prevalecence: 51.8, comments: '' },
         { name: 'Buddhism', prevalecence: 34.9, comments: '' }
@@ -136,7 +136,7 @@ const data = [
     basics: {
       name: 'Portugal',
       regionId: '5d6a3c4b2b27d6075493f6b4',
-      languages: [{ name: 'Portuguese' }],
+      languages: [{ name: 'Portuguese', official: true }],
       religions: [
         { name: 'Catholic Church', prevalecence: 81, comments: '' }
       ],
@@ -252,7 +252,7 @@ const data = [
     basics: {
       name: 'Spain',
       regionId: '5d6a3c4b2b27d6075493f6b4',
-      languages: [{ name: 'Spanish' }],
+      languages: [{ name: 'Spanish', official: true }],
       religions: [
         { name: 'Christianism', prevalecence: 68.9, comments: '' },
         { name: 'No Religion', prevalecence: 27.1, comments: '' },

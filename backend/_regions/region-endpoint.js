@@ -81,7 +81,7 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
           headers: {
             'Content-Type': 'application/json'
           },
-          statusCode: 201,
+          statusCode: 200,
           data: result
          }
       }

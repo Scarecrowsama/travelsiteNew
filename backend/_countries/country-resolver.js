@@ -9,9 +9,9 @@ module.exports = function makeCountryResolver({ countryModel }) {
     remove
   });
 
-  async function add({ country: countryDetails}) {
-    const newCountryObject = makeAValidCountryObject(countryDetails);
-    const newCountryInstance = await countryModel.create(newCountryObject);
+  async function add(countryDetails) {
+    // const newCountryObject = makeAValidCountryObject(countryDetails);
+    const newCountryInstance = await countryModel.create(countryDetails);
     return newCountryInstance.save();
   }
 
@@ -28,6 +28,6 @@ module.exports = function makeCountryResolver({ countryModel }) {
   }
 
   async function remove({ countryId }) {
-    return countryModel.deleteOne(countryId);
+    return countryModel.deleteOne({ _id: countryId });
   }
 }

@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const country = new mongoose.Schema({
   basics: {
-    name: { type: String, requried: true },
-    regionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Region' },
+    name: { type: String, required: true },
+    regionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Region', required: true },
     languages: [
-      { name: { type: String, required: true } }
+      { name: { type: String, required: true }, official: { type: Boolean, required: true } }
     ],
     religions: [
       {

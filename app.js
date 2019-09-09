@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.use(corsErrorHandler);
 
 app.use('/region', require('./backend/_regions/region-routes'));
+app.use('/country', require('./backend/_countries/country-routes'));
 const adaptRequest = require('./backend/helpers/adapt-request');
 const regionHandler = require('./backend/_regions/index');
 // app.use('/', async (req, res, next) => {
