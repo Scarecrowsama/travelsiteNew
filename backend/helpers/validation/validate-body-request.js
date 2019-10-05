@@ -2,7 +2,8 @@ const makeHttpError = require('../errorHandling/http-error');
 
 module.exports = async (httpBody) => {
   console.log('From the validate body ', httpBody);
-  if(!httpBody.city) {
+  if(!httpBody) {
+    console.log('ARE YOU HAVING A LAUGH MATE');
     return makeHttpError({
       statusCode: 400,
       errorMessage: 'Bad request. No POST body.'

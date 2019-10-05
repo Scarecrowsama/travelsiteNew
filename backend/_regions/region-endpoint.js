@@ -1,6 +1,5 @@
 const makeRegion = require('./region-maker');
 const makeHttpError = require('../helpers/errorHandling/http-error');
-// const validateBodyRequest = require('../helpers/validation/validate-body-request');
 
 module.exports = function regionEndpointHandler({ regionFactory }) {
 
@@ -19,41 +18,34 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
     }
 
     async function getRegions(httpRequest) {
-
       try {
-        const { id } = httpRequest.pathParams || {};
-        const result = id 
-                          ? await regionFactory.findById({ regionId: id })
-                          : await regionFactory.findAll();
+        const { regionId } = httpRequest.pathParams || {};
+        const result = regionId ? await regionFactory.findById({ regionId }) : await regionFactory.findAll();
+
         return {
           headers: {
             'Content-Type': 'application/json'
           },
-          statusCode: 200,
-          data: result
-        };
-      }
+          statusCode: result ? 200 : 404,
+          data: {
+            success: result ? true : false,
+            regions: result ? result : 'No results found.'
+          }
+        };   
+      } 
       catch(error) {
-        return makeHttpError({
-          statusCode: 404,
-          errorMessage: error.message
-        });
+        return makeHttpError({ statusCode: 404, errorMessage: error.message });
       }
-
     };
 
     async function postRegions(httpRequest) {
 
-      let regionInfo = httpRequest.body;
+      let regionInfo = httpRequest.body.region;
       const { isDelete, isUpdate, isCreate } = httpRequest.body;
       const { id } = httpRequest.pathParams || {};
-      // const isBodyValid = await validateBodyRequest(httpRequest.body);
-      // console.log(isBodyValid);
+
       if(!regionInfo) {
-        return makeHttpError({
-          statusCode: 400,
-          errorMessage: 'Bad request. No POST body.'
-        });
+        return makeHttpError({ statusCode: 400, errorMessage: 'No region info.' });
       }
       
       if(typeof httpRequest.body === 'string') {
@@ -69,7 +61,7 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
 
       try {
         const newRegionObject = makeRegion(regionInfo);
-        const result = isUpdate
+        const data = isUpdate
           ? await regionFactory.edit({ regionId: id , newInfo: { name: httpRequest.body.name } })
           : isDelete 
             ? await regionFactory.remove({ regionId: id })
@@ -82,13 +74,16 @@ module.exports = function regionEndpointHandler({ regionFactory }) {
             'Content-Type': 'application/json'
           },
           statusCode: 200,
-          data: result
+          data: {
+            success: data ? true : false,
+            ...(data && { regionCreated: data })
+          }
          }
       }
       catch(error) {
         return makeHttpError({
           statusCode: 500,
-          errorMessage: error.message + ' mother fucker.'
+          errorMessage: error.message
         });
       }
     };

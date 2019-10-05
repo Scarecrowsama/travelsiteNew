@@ -4,7 +4,7 @@ const { regionController } = require('./region-controller');
 router.route('/')
   .get(regionController)
   .post(regionController);
-router.route('/:id')
+router.route('/:regionId')
   .get(regionController)
   .post(regionController);
 

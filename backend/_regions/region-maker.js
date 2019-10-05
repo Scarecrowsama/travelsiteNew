@@ -5,6 +5,11 @@ const capitalize = require('../helpers/normalization/capitalize');
 module.exports = function makeAValidRegionObject(regionInfo = requiredParam('region')) {
 
   const validRegion = validate(regionInfo);
+
+  if(!validRegion) {
+    throw new Error('Region details are not valid');
+  }
+
   const normalizedRegion = normalize(validRegion);
 
   return Object.freeze(normalizedRegion);
