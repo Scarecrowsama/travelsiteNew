@@ -363,6 +363,67 @@ const data = [
     },
     cities: [],
     rating: {}
+  },
+  { 
+    basics: { 
+      name: 'Singapore',
+      regionId: '5d73da030da83123e0b5e1c4',
+      languages: [ { name: 'English', official: true } ],
+      economics: { currencies: [ { name: 'Singapore Dollar', acronym: 'SGD', official: true } ] },
+      electrics: { voltage: 230, frequency: 50, plug: 'G' },
+      food: 
+       { dietaryOptions: 
+          { glutenFree: { difficulty: 4, comments: 'Very difficult in Singapore' },
+            vegetarian: { difficulty: 3, comments: 'Difficult in Singapore' },
+            vegan: { difficulty: 3.5, comments: 'Quite difficult in Singapore}' } } },
+      simCards: [],
+      wifi: { coverage: 'Good', speed: 'Amazing', pocketWifi: true },
+      importantDates: [],
+      nationalHolidays: 
+       [ { name: 'New Year\'s',
+           date: 1567241930376,
+           duration: 1,
+           details: 'New Year\'s in Singapore' } ] 
+    },
+    costs: { 
+        food: 
+        [ { place: 'Restaurants',
+            cost: 4,
+            comments: 'Restaurants are very expensive in Singapore' } ],
+        accommodation: 
+        [ { place: 'Hostels',
+            cost: 3.5,
+            comments: 'There are not many hostels in Singapore and they are pricey.' } ],
+        transport: 
+        [ { method: 'Underground',
+            cost: 2,
+            comments: 'Very affordable way to get around Singapore' } ],
+        telecoms: { phone: { calls: 3, megabytes: 3, comments: 'Phone calls in Singapore' } },
+        discountCards: [],
+        averages: 
+        { food: 'High-Very High',
+          accommodation: 'High',
+          transport: 'Low-Medium',
+          phoneInternet: 'Low',
+          others: 'Medium',
+          avgPerDay: '40-50' }
+    },
+    weather: {},
+    legal: {},
+    safety: { 
+        risks: 
+        { waterSafety: 
+            { isSafe: true,
+              comments: 'Water is safe to drink in Singapore' },
+          others: [] },
+        prohibitions: 
+        [ { name: 'Chewing Gum',
+            description: 'Chewing gums are banned in Singapore',
+            gender: 'Both',
+            penalty: '$1000 fine' } ]
+    },
+    cities: [],
+    rating: {}
   }
 ];
 

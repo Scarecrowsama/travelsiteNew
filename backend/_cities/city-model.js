@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const city = new mongoose.Schema({
   basics: {
     name: { type: String, required: true },
-    country: { id: { type: mongoose.Schema.Types.ObjectId, name: 'Country' }, name: String },
+    country: { id: { type: mongoose.Schema.Types.ObjectId, ref: 'Country' }, name: String },
     cityCards: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CityCard' }]
   },
   costs: {

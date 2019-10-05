@@ -1,4 +1,4 @@
-const makeAValidCityObject = require('./city');
+const makeAValidCityObject = require('./city-maker');
 const cityModel = require('./city-model');
 
 module.exports = function makeCityResolver({ database }) {
@@ -11,8 +11,8 @@ module.exports = function makeCityResolver({ database }) {
   });
 
   async function add(cityDetails) {
-    const newCityObject = makeAValidCityObject(cityDetails);
-    const newCityInstance = await cityModel.create(newCityObject);
+    // const newCityObject = makeAValidCityObject(cityDetails);
+    const newCityInstance = await cityModel.create(cityDetails);
     return newCityInstance.save();
   };
 
