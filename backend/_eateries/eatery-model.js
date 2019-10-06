@@ -11,9 +11,10 @@ const eatery = new mongoose.Schema({
     longitude: String,
     address: String
   },
-  dietaryOptions: [{ option: String }],
+  dietaryOptions: [{ _id: false, option: String }],
   deliveryServices: [
     {
+      _id: false,
       name: String, app: Boolean, appName: String, description: String
     }
   ],

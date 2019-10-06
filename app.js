@@ -17,6 +17,7 @@ app.use(corsErrorHandler);
 app.use('/regions', require('./backend/_regions/region-routes'));
 app.use('/countries', require('./backend/_countries/country-routes'));
 app.use('/cities', require('./backend/_cities/city-routes'));
+app.use('/eateries', require('./backend/_eateries/eatery-routes'));
 
 // Connecting to the DB and listening to the server after success.
 db

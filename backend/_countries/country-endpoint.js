@@ -75,7 +75,10 @@ module.exports = function countryEndpointHandler({ countryFactory }) {
             'Content-Type': 'application/json'
           },
           statusCode: 200,
-          data: result
+          data: {
+            success: data ? true : false,
+            ...(data && { regionCreated: data })
+          }
         }
       }
       catch(error) {
