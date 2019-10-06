@@ -11,7 +11,7 @@ module.exports = function makeEateryResolver({ eateryModel }) {
   });
 
   async function add(eateryDetails) {
-    // const newEateryObject = makeAValidCountryObject(eateryDetails); TODO
+    // const newEateryObject = makeAValidDrinkeryObject(eateryDetails); TODO
     const newEateryInstance = await eateryModel.create(eateryDetails);
     const cityEatery = await City.findById(eateryDetails.cityId);
     cityEatery.foodAndDrink.eateries.push(newEateryInstance._id);

@@ -1,15 +1,15 @@
-const makeEatery = require('./eatery-maker');
+const makeDrinkery = require('./drinkery-maker');
 const makeHttpError = require('../helpers/errorHandling/http-error');
 
-module.exports = function eateryEndpointHandler({ eateryFactory }) {
+module.exports = function drinkeryEndpointHandler({ drinkeryFactory }) {
 
-  return async function eateryHandler(httpRequest) {
+  return async function drinkeryHandler(httpRequest) {
 
     switch(httpRequest.method) {
       case 'GET':
-        return getEateries(httpRequest);
+        return getDrinkeries(httpRequest);
       case 'POST':
-        return postEateries(httpRequest);
+        return postDrinkeries(httpRequest);
       default:
         return makeHttpError({
           statusCode: 405,
@@ -17,10 +17,10 @@ module.exports = function eateryEndpointHandler({ eateryFactory }) {
         });
     }
 
-    async function getEateries(httpRequest) {
+    async function getDrinkeries(httpRequest) {
       try {
-        const { eateryId } = httpRequest.pathParams || {};
-        const result = eateryId ? await eateryFactory.findById({ eateryId }) : await eateryFactory.findAll();
+        const { drinkeryId } = httpRequest.pathParams || {};
+        const result = drinkeryId ? await drinkeryFactory.findById({ drinkeryId }) : await drinkeryFactory.findAll();
 
         return {
           headers: {
@@ -29,7 +29,7 @@ module.exports = function eateryEndpointHandler({ eateryFactory }) {
           statusCode: result ? 200 : 404,
           data: {
             success: result ? true : false,
-            eateries: result ? result : 'No results found.'
+            drinkeries: result ? result : 'No results found.'
           }
         };   
       } 
@@ -38,19 +38,19 @@ module.exports = function eateryEndpointHandler({ eateryFactory }) {
       }
     };
 
-    async function postEateries(httpRequest) {
+    async function postDrinkeries(httpRequest) {
 
-      let eateryInfo = httpRequest.body.eatery;
+      let drinkeryInfo = httpRequest.body.drinkery;
       const { isDelete, isUpdate, isCreate } = httpRequest.body;
       const { id } = httpRequest.pathParams || {};
 
-      if(!eateryInfo) {
-        return makeHttpError({ statusCode: 400, errorMessage: 'No Eatery info.' });
+      if(!drinkeryInfo) {
+        return makeHttpError({ statusCode: 400, errorMessage: 'No Drinkery info.' });
       }
       
       if(typeof httpRequest.body === 'string') {
         try {
-          eateryInfo = JSON.parse(eateryInfo);
+          drinkeryInfo = JSON.parse(drinkeryInfo);
         } catch(error) {
           return makeHttpError({
             statusCode: 400,
@@ -60,13 +60,13 @@ module.exports = function eateryEndpointHandler({ eateryFactory }) {
       }
 
       try {
-        // const newEateryObject = makeRegion(eateryInfo);
+        // const newDrinkeryObject = makeDrinkery(drinkeryInfo);
         const data = isUpdate
-          ? await eateryFactory.edit({ eateryId: id , newInfo: { eateryInfo } })
+          ? await drinkeryFactory.edit({ drinkeryId: id , newInfo: { drinkeryInfo } })
           : isDelete 
-            ? await eateryFactory.remove({ eateryId: id })
+            ? await drinkeryFactory.remove({ drinkeryId: id })
             : isCreate
-              ? await eateryFactory.add(eateryInfo)
+              ? await drinkeryFactory.add(drinkeryInfo)
               : null;
         
         return { 
@@ -76,7 +76,7 @@ module.exports = function eateryEndpointHandler({ eateryFactory }) {
           statusCode: 200,
           data: {
             success: data ? true : false,
-            ...(data && { eateryCreated: data })
+            ...(data && { drinkeryCreated: data })
           }
          }
       }
