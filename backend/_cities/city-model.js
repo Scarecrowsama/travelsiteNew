@@ -9,6 +9,7 @@ const city = new mongoose.Schema({
   costs: {
     food: [
       {
+        _id: false,
         place: { type: String, required: true },
         cost: { type: Number, required: true },
         comments: { type: String, required: true }
@@ -16,6 +17,7 @@ const city = new mongoose.Schema({
     ],
     accommodation: [
       {
+        _id: false,
         place: { type: String, required: true },
         cost: { type: Number, required: true },
         comments: { type: String, required: true }
@@ -23,6 +25,7 @@ const city = new mongoose.Schema({
     ],
     transport: [
       {
+        _id: false,
         method: { type: String, required: true },
         cost: { type: Number, required: true },
         comments: { type: String, required: true }
@@ -30,6 +33,7 @@ const city = new mongoose.Schema({
     ],
     others: [
       {
+        _id: false,
         name: { type: String },
         cost: { type: Number },
         comments: { type: String }
@@ -37,6 +41,7 @@ const city = new mongoose.Schema({
     ],
     discountCards: [
       {
+        _id: false,
         name: { type: String },
         discountsFor: { type: String },
         price: { type: String },

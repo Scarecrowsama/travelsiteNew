@@ -1,4 +1,5 @@
 const makeAValidCountryObject = require('./country-maker');
+const Region = require('../_regions/region-model');
 
 module.exports = function makeCountryResolver({ countryModel }) {
   return Object.freeze({
@@ -10,9 +11,12 @@ module.exports = function makeCountryResolver({ countryModel }) {
   });
 
   async function add(countryDetails) {
-    // const newCountryObject = makeAValidCountryObject(countryDetails);
+    // const newCountryObject = makeAValidCountryObject(countryDetails); TODO
     const newCountryInstance = await countryModel.create(countryDetails);
-    return newCountryInstance.save();
+    const countryRegion = await Region.findById(countryDetails.basics.regionId);
+    countryRegion.countries.push({ id: newCountryInstance._id, name: newCountryInstance.basics.name });
+    await countryRegion.save();
+    return newCountryInstance;
   }
 
   async function findById({ countryId }) {

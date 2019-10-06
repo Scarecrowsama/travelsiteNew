@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 app.use(corsErrorHandler);
 
 // Routes
-app.use('/region', require('./backend/_regions/region-routes'));
-app.use('/country', require('./backend/_countries/country-routes'));
-app.use('/city', require('./backend/_cities/city-routes'));
+app.use('/regions', require('./backend/_regions/region-routes'));
+app.use('/countries', require('./backend/_countries/country-routes'));
+app.use('/cities', require('./backend/_cities/city-routes'));
 
 // Connecting to the DB and listening to the server after success.
 db

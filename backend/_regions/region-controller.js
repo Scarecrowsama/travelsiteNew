@@ -6,5 +6,5 @@ exports.regionController = async (req, res, next) => {
   .then(({ headers, statusCode, data }) => {
     res.set(headers).status(statusCode).json(data);
   })
-  .catch(err => console.log('Controller error...'));
+  .catch(err => console.log(err));
 }

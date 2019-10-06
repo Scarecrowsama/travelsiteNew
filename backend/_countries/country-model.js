@@ -5,16 +5,17 @@ const country = new mongoose.Schema({
     name: { type: String, required: true },
     regionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Region', required: true },
     languages: [
-      { name: { type: String, required: true }, official: { type: Boolean, required: true } }
+      { _id: false, name: { type: String, required: true }, official: { type: Boolean, required: true } }
     ],
     religions: [
       {
-        name: { type: String, prevalecence: Number, comments: String }
+        _id: false, name: { type: String, prevalecence: Number, comments: String }
       }
     ],
     economics: {
       currencies: [
         {
+          _id: false,
           name: { type: String, required: true },
           acronym: { type: String, required: true },
           official: { type: Boolean, required: true },
@@ -44,6 +45,7 @@ const country = new mongoose.Schema({
     importantDates: [],
     nationalHolidays: [
       {
+        _id: false,
         name: { type: String },
         date: { type: Date },
         duration: { type: Number },
@@ -54,33 +56,37 @@ const country = new mongoose.Schema({
   costs: {
     food: [
       {
-        place: { type: String, required: true },
-        cost: { type: Number, required: true },
-        comments: { type: String, required: true }
+        _id: false,
+        place: { type: String },
+        cost: { type: Number },
+        comments: { type: String }
       }
     ],
     accommodation: [
       {
-        place: { type: String, required: true },
-        cost: { type: Number, required: true },
-        comments: { type: String, required: true }
+        _id: false,
+        place: { type: String },
+        cost: { type: Number },
+        comments: { type: String }
       }
     ],
     transport: [
       {
-        method: { type: String, required: true },
-        cost: { type: Number, required: true },
-        comments: { type: String, required: true }
+        _id: false,
+        method: { type: String },
+        cost: { type: Number },
+        comments: { type: String }
       }
     ],
     telecoms: {
       phone: {
-        calls: { type: Number, required: true },
-        megabytes: { type: Number, required: true },
-        comments: { type: String, required: true }
+        calls: { type: Number },
+        megabytes: { type: Number },
+        comments: { type: String }
       },
       internet: [
         {
+          _id: false,
           device: { name: String },
           cost: { type: Number },
           comments: { type: String }
@@ -89,6 +95,7 @@ const country = new mongoose.Schema({
     },
     others: [
       {
+        _id: false,
         name: { type: String },
         cost: { type: Number },
         comments: { type: String }
@@ -96,6 +103,7 @@ const country = new mongoose.Schema({
     ],
     discountCards: [
       {
+        _id: false,
         name: { type: String },
         discountsFor: { type: String },
         price: { type: String },
@@ -132,7 +140,7 @@ const country = new mongoose.Schema({
   legal: {
     visas: [
       {
-  
+        _id: false,
       }
     ],
     customsDuties: [],
@@ -145,6 +153,7 @@ const country = new mongoose.Schema({
     ],
     vaccinations: [
       {
+        _id: false,
         name: { type: String },
         recommended: { type: Boolean },
         mandatory: { type: Boolean },
@@ -153,10 +162,11 @@ const country = new mongoose.Schema({
     ],
     risks: {
       waterSafety: { 
-        isSafe: { type: Boolean, required: true},
-        comments: { type: String, required: true } 
+        isSafe: { type: Boolean },
+        comments: { type: String } 
       }, 
       others: [{
+        _id: false,
         name: { type: String },
         possibility: { type: Boolean },
         probability: { type: Number },
@@ -165,6 +175,7 @@ const country = new mongoose.Schema({
     },
     prohibitions: [
       {
+        _id: false,
         name: { type: String },
         description: { type: String },
         gender: { type: String },
@@ -174,6 +185,7 @@ const country = new mongoose.Schema({
   },
   cities: [
     {
+      _id: false,
       id: { type: mongoose.Schema.Types.ObjectId, ref: 'City' },
       name: { type: String }
     }
