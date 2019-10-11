@@ -19,6 +19,7 @@ app.use('/countries', require('./backend/_countries/country-routes'));
 app.use('/cities', require('./backend/_cities/city-routes'));
 app.use('/eateries', require('./backend/_eateries/eatery-routes'));
 app.use('/drinkeries', require('./backend/_drinkeries/drinkery-routes'));
+app.use('/itineraries', require('./backend/_itineraries/itinerary-routes'));
 
 // Connecting to the DB and listening to the server after success.
 db
