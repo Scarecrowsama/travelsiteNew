@@ -38,7 +38,6 @@ module.exports = function cityEndpointHandler({ cityFactory }) {
 
     async function postCity(httpRequest) {
       let cityInfo = httpRequest.body.city;
-      console.log(cityInfo);
       const { isDelete, isUpdate, isCreate } = httpRequest.body;
       const { id } = httpRequest.pathParams || {};
 

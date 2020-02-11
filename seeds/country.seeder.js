@@ -9,8 +9,11 @@ const data = [
       regionId: '5d6a3c4b2b27d6075493f6b4',
       languages: [{ name: 'Japanese', official: true }],
       religions: [
-        { name: 'Folk Shinto or No religion', prevalecence: 51.8, comments: '' },
-        { name: 'Buddhism', prevalecence: 34.9, comments: '' }
+        { name: 'Folk Shinto or No religion', prevalecence: 51.8, official: false },
+        { name: 'Buddhism', prevalecence: 34.9, official: false },
+        { name: 'Others', prevalecence: 13.3, official: false },
+        { name: 'Christianity', prevalecence: 2, official: false },
+        { name: 'Muslim', prevalecence: 0.1, official: false }
       ],
       economics: {
         currencies: [
@@ -378,6 +381,67 @@ const data = [
             vegan: { difficulty: 3.5, comments: 'Quite difficult in Singapore}' } } },
       simCards: [],
       wifi: { coverage: 'Good', speed: 'Amazing', pocketWifi: true },
+      importantDates: [],
+      nationalHolidays: 
+       [ { name: 'New Year\'s',
+           date: 1567241930376,
+           duration: 1,
+           details: 'New Year\'s in Singapore' } ] 
+    },
+    costs: { 
+        food: 
+        [ { place: 'Restaurants',
+            cost: 4,
+            comments: 'Restaurants are very expensive in Singapore' } ],
+        accommodation: 
+        [ { place: 'Hostels',
+            cost: 3.5,
+            comments: 'There are not many hostels in Singapore and they are pricey.' } ],
+        transport: 
+        [ { method: 'Underground',
+            cost: 2,
+            comments: 'Very affordable way to get around Singapore' } ],
+        telecoms: { phone: { calls: 3, megabytes: 3, comments: 'Phone calls in Singapore' } },
+        discountCards: [],
+        averages: 
+        { food: 'High-Very High',
+          accommodation: 'High',
+          transport: 'Low-Medium',
+          phoneInternet: 'Low',
+          others: 'Medium',
+          avgPerDay: '40-50' }
+    },
+    weather: {},
+    legal: {},
+    safety: { 
+        risks: 
+        { waterSafety: 
+            { isSafe: true,
+              comments: 'Water is safe to drink in Singapore' },
+          others: [] },
+        prohibitions: 
+        [ { name: 'Chewing Gum',
+            description: 'Chewing gums are banned in Singapore',
+            gender: 'Both',
+            penalty: '$1000 fine' } ]
+    },
+    cities: [],
+    rating: {}
+  },
+  { 
+    basics: { 
+      name: 'Thailand',
+      regionId: '5d73da030da83123e0b5e1c4',
+      languages: [ { name: 'Thai', official: true } ],
+      economics: { currencies: [ { name: 'Thai Bath', acronym: 'THB', official: true } ] },
+      electrics: { voltage: 230, frequency: 50, plug: 'A/B/C/O' },
+      food: 
+       { dietaryOptions: 
+          { glutenFree: { difficulty: 4, comments: 'Very difficult in Thailand' },
+            vegetarian: { difficulty: 3, comments: 'Difficult in Thailand' },
+            vegan: { difficulty: 3.5, comments: 'Quite difficult in Thailand}' } } },
+      simCards: [],
+      wifi: { coverage: 'Good', speed: 'Very Good', pocketWifi: true },
       importantDates: [],
       nationalHolidays: 
        [ { name: 'New Year\'s',

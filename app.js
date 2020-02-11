@@ -2,6 +2,7 @@
 const express           = require('express');
 const bodyParser        = require('body-parser');
 const dotenv            = require('dotenv').config();
+const helmet            = require('helmet');
 
 // Additional files required to config the server.
 const db                = require('./backend/database/db-connection');
@@ -9,7 +10,7 @@ const corsErrorHandler  = require('./backend/middlewares/preventCorsErrors');
 const app               = express();
 
 // Server configuration
-app.disable('x-powered-by');
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(corsErrorHandler);
 

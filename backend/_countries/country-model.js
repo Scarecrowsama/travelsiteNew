@@ -9,7 +9,7 @@ const country = new mongoose.Schema({
     ],
     religions: [
       {
-        _id: false, name: { type: String, prevalecence: Number, comments: String }
+        _id: false, name: { type: String, required: true }, prevalecence: Number, comments: String, official: { type: Boolean, required: true }
       }
     ],
     economics: {
